@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: src/configs/remindConfig.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,40 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: src/configs/remindConfig.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Este modulo contiene el protocolo de autorizacion para conectarse a la base de datos de firebase
+ * @module configuraciones
+ */
 
+/**
+ * Protocolo de autorizacion para acreditar la validez de la conexión con la base de firebase
+ */
+var serviceAccount = require("./privatekey.json");
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://reminders-6e91d-default-rtdb.firebaseio.com"
+});
+var db = admin.database()
 
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * Exporta el comando que permite usar la base de datos al archivo remindModels.js
+ * {@link module models}
+ */
+module.exports = {
+    database: db
+}
+</code></pre>
+        </article>
+    </section>
 
 
 
