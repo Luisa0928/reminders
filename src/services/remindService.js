@@ -14,6 +14,7 @@ function setTitle(title) {
 
 //Esta funcion imprime el titulo del recordatorio cuando comprueba que es el momento indicado, de lo contrario espera un segundo para volverse 
 //a ejecutar
+ 
 function isItTimeToSendTheReminder(year, month, day, hour, minute, sendMessage) {
     var date = new Date()
     if (overdueStatus(year, month, day, hour, minute) == 0) {
