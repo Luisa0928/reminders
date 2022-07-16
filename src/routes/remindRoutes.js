@@ -1,22 +1,20 @@
 /**
- * Este archivo expone las rutas de acceso a inputs y exporta la funcion route
+ * Este archivo expone las rutas de acceso a inputs
  * @module routes
  */
 /**
- * @constant express Con esta variable estoy importando la libreria express
+ *Con esta constante estoy llamando la funcion express que importa la libreria express
  */
 const express = require('express')
 
 /**
- * @constant route  crea un direccionador como un módulo, carga una función de middleware en él, define algunas rutas y monta el módulo de direccionador en una vía de acceso en la aplicación principal.
- * @default
+* Con esta constante llamo el objeto router que carga una función de middleware en él, define algunas rutas y monta el módulo de direccionador en una vía de acceso en la aplicación principal.
  */
 const route = express.Router()
 
 /**
- @constant remindController  This constant contains the controller path
- @requires modules {@link controller}
- @default
+ * This constant contains the controller path
+ *  @requires module {@link module: controller}
  */
 const remindController = require("../controllers/remindController.js")
 
@@ -38,7 +36,10 @@ route.post('/reminder', remindController.createReminder)
  */
 route.delete('/reminder/:tittle', remindController.deleteReminder)
 
-
+/**
+ * Exporta la contante "route" al archivo index.js
+ * {@link module: index}
+ */
 module.exports = {
     route
 }

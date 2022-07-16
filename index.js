@@ -1,11 +1,25 @@
+/**
+ * Este modulo es el contacto inicial del cliente para acceder al programa
+ * @module index
+ */
+
 const express = require('express')
+/**
+ * App es un objeto que crea una aplicacion de express
+ */
 const app = express()
 app.use(express.json())
 
+/**
+ * Requiere usar la variable remindRoutes del modulo routes
+ *  @requires module {@link module: routes}
+ */
 const { route } = require("./src/routes/remindRoutes.js")
 app.use(route)
 
-//Determina el puerto desde el cual se van a escuchar las peticiones del cliente
+/**
+ * Determina el puerto desde el cual se van a escuchar las peticiones del cliente usando la aplicacion de express
+ */
 app.listen(3000)
 
 /* Algoritmo

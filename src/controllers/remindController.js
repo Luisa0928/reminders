@@ -3,22 +3,31 @@
  * @module controller
  */
 
+/**
+ * Importa del module services las funciones getReminderService, createReminderService y deleteReminderService
+ * @requires module {@link module: services}
+ */
 const {
     getReminderService,
     createReminderService,
     deleteReminderService} = require("../services/remindService.js")
+/**
+ * Esta funcion devuelve la funciona getReminderSevice que tiene un callback para devolver los recordatorios
+ * @param {string} req en esta funcion no se pide requerimienro al usuario
+ * @param {number|string} res esta funcion devuelve los recordatorios creados por el usuario
+ */
 
-//Crea un objeto que contiene los recordatorios eliminadas por el usuario antes de que se cumplan y los
-//que se cumplen.
-
-//Devuelve todas las alarmas
 function getReminder(req, res) {
     getReminderService(function(data) {
         res.send(data)
     })
 }
 
-//Crea alarmas
+/**
+ * Esta funcion llama la funcion createReminderService y pide la fecha del recordatorio y devuelve un mensaje de error si se identifica incompletitud de los datos.
+ * @param {string|number} req pide que el usuario llene el titulo de la alarma y los valores de la fecha
+ * @param {string} res responde un mensaje de error
+ */
 function createReminder(req, res) {
     const {year, month, day, hour, minute, tittle } = req.body
     if (!year) res.send("Error: Missing hour")
@@ -30,13 +39,22 @@ function createReminder(req, res) {
     res.send(createReminderService(year, month, day, hour, minute,tittle))
 }
 
-//Elimina alarmas
+/**
+ * Esta funcion llama la funcion deleteReminderService y pide al usuario el titulo del recordatorio para eliminarlo, tambien manda mensaje de error si falta el titulo del recordatorio 
+ * @param {string} req  pide al usuario el titulo del recordatorio que desea eliminar
+ * @param {string} res  envia mensaje de error si falta el titulo del recordatorio
+ */
+
 function deleteReminder(req, res) {
     var tittle= req.params.tittle
     if (!tittle) res.send("Error: missing title")
     res.send(deleteReminderService(tittle))
 }
 
+/**
+ * Exporta las funciones dentro del objeto al archivo remindRoutes.js que se conecta con los metodos de peticion de express
+ * {@link module: routes}
+ */
 
 module.exports = {
     getReminder,
