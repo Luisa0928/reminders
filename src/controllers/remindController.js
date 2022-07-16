@@ -1,3 +1,8 @@
+/**
+ * Este modulo  crea la logica de intrucciones que deben recibir los metodos post, get y delete
+ * @module controller
+ */
+
 const {
     getReminderService,
     createReminderService,
@@ -32,10 +37,7 @@ function deleteReminder(req, res) {
     res.send(deleteReminderService(tittle))
 }
 
-/**
- * Este modulo  crea la logica de intrucciones que deben recibir los metodos post, get y delete
- * @modules controller
- */
+
 module.exports = {
     getReminder,
     createReminder,
